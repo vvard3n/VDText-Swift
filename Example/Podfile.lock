@@ -1,0 +1,16 @@
+PODS:
+  - VDText (0.1.0)
+
+DEPENDENCIES:
+  - VDText (from `../`)
+
+EXTERNAL SOURCES:
+  VDText:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  VDText: 3659f1c2ce5cd6f88cd0daf467bf5d454e8c4b66
+
+PODFILE CHECKSUM: 63e7baad8c11f893f073a0b56019f9d628af758b
+
+COCOAPODS: 1.10.0.rc.1

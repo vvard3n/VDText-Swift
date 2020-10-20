@@ -1,0 +1,6 @@
+framework module VDText {
+  umbrella header "VDText-umbrella.h"
+
+  export *
+  module * { export * }
+}
