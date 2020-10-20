@@ -628,7 +628,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				MODULEMAP_FILE = "Target Support Files/VDText/VDText.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.nvar.VDText;
 				PRODUCT_MODULE_NAME = VDText;
 				PRODUCT_NAME = VDText;
 				SDKROOT = iphoneos;
@@ -660,7 +662,9 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.0.0;
 				MODULEMAP_FILE = "Target Support Files/VDText/VDText.modulemap";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.nvar.VDText;
 				PRODUCT_MODULE_NAME = VDText;
 				PRODUCT_NAME = VDText;
 				SDKROOT = iphoneos;

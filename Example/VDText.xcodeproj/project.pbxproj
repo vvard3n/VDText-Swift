@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		042C05BF0B65A18BC52AA5A7 /* VDText.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VDText.podspec; path = ../VDText.podspec; sourceTree = "<group>"; };
+		042C05BF0B65A18BC52AA5A7 /* VDText.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VDText.podspec; path = ../VDText.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		19B9E128B296E28EFDCA6CEB /* Pods_VDText_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VDText_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3D36093B92DEAD6776547E /* Pods-VDText_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VDText_Example.release.xcconfig"; path = "Target Support Files/Pods-VDText_Example/Pods-VDText_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* VDText_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VDText_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
