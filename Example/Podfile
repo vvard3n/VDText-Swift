@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'VDText_Example' do
+  pod 'VDText', :path => '../'
+
+  target 'VDText_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
