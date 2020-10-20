@@ -6,7 +6,7 @@
 
 import UIKit
 
-class VDTextView: UIView {
+public class VDTextView: UIView {
     public var placeholder: String? {
         didSet { updatePlaceholder() }
     }
@@ -85,7 +85,7 @@ class VDTextView: UIView {
 
     // MARK: - Layout
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         var frame = bounds.inset(by: textContainerInset)
         let size = placeholderLabel.sizeThatFits(frame.size)
@@ -170,7 +170,7 @@ class VDTextView: UIView {
 }
 
 extension VDTextView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = textView.text.count > 0
     }
 }
