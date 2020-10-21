@@ -24,9 +24,25 @@ class ViewController: UIViewController {
 
     @IBAction func addLinkBtnDIdClick(_ sender: UIButton) {
 //        NSMutableAttributedString *mattStr = self.textEditor.attributedText.mutableCopy;
-        let mattStr = textView.attributedText?.mutableCopy()
-        let replaceText = NSMutableAttributedString(string: " ")
-//        replaceText.vd
+        let mattStr = (textView.attributedText?.mutableCopy())! as! NSMutableAttributedString
+        var replaceText = NSMutableAttributedString(string: " ")
+        replaceText.vd.color = UIColor.black
+        replaceText.vd.font = UIFont.systemFont(ofSize: 18)
+        var displayText = NSMutableAttributedString(string: "TextBinding")
+        displayText.vd.color = UIColor.blue
+        displayText.vd.font = UIFont.systemFont(ofSize: 18)
+        replaceText.append(displayText)
+        var blackText = NSMutableAttributedString(string: " ")
+        blackText.vd.color = UIColor.black
+        blackText.vd.font = UIFont.systemFont(ofSize: 18)
+        replaceText.append(blackText)
+        replaceText.vd.setTextBinding(VDTextBinding(deleteConfirm: true), range: NSRange(location: 0, length: replaceText.length))
+        
+        let selectedRange = textView.selectedRange
+        mattStr.insert(replaceText, at: selectedRange.location)
+        
+        textView.attributedText = mattStr
+        textView.selectedRange = NSRange(location: selectedRange.location + replaceText.length, length: 0)
         //替换文本
 //        NSMutableAttributedString *replaceText = [[NSMutableAttributedString alloc] initWithString:@" "];
 //        replaceText.vd_color = kTextViewTextColor;

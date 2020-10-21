@@ -1,7 +1,7 @@
 //
 //  VDTextView.swift
 //
-//  Created by Haijun on 2020/10/19.
+//  Created by Harwyn T'an on 2020/10/21.
 //
 
 import UIKit
@@ -108,11 +108,13 @@ public class VDTextView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initCommon()
+        initObserver()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         initCommon()
+        initObserver()
     }
 
     private func initCommon() {
@@ -194,20 +196,24 @@ extension VDTextView {
 
 class _TextView: UITextView {
     private var preSelecteRange: NSRange?
+    private var delConform: Bool = false
 
     override func deleteBackward() {
         if selectedRange.location == 0 {
+            delConform = false
             super.deleteBackward()
             return
         }
         var effectiveRange = NSRange(location: 0, length: 0)
         guard attributedText.attribute(.vdTextBinding, at: selectedRange.location - 1, longestEffectiveRange: &effectiveRange, in: NSRange(location: 0, length: attributedText.length)) != nil else {
+            delConform = false
             super.deleteBackward()
             return
         }
         let attrbuteString = attributedText.mutableCopy() as! NSMutableAttributedString
         preSelecteRange = selectedRange
         if selectedRange.length > 0 {
+            delConform = false
             attrbuteString.replaceCharacters(in: selectedRange, with: "")
             attributedText = attrbuteString
             preSelecteRange = NSRange(location: preSelecteRange?.location ?? 0, length: 0)
@@ -216,8 +222,15 @@ class _TextView: UITextView {
             return
         }
 
-        attrbuteString.replaceCharacters(in: effectiveRange, with: "")
-        preSelecteRange = NSRange(location: preSelecteRange?.location ?? 0, length: 0)
+        if !delConform {
+            delConform = true
+            preSelecteRange = effectiveRange
+        }
+        else {
+            delConform = false
+            attrbuteString.replaceCharacters(in: effectiveRange, with: "")
+            preSelecteRange = NSRange(location: preSelecteRange?.location ?? 0, length: 0)
+        }
         attributedText = attrbuteString
         if let range = preSelecteRange { selectedRange = range }
     }

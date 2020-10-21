@@ -1,24 +1,30 @@
 //
 //  VDTextBinding.swift
 //
-//  Created by Haijun on 2020/10/19.
+//  Created by Harwyn T'an on 2020/10/21.
 //
 
 import Foundation
 
 let kSystemVersion: Double = Double(UIDevice.current.systemVersion) ?? 0
 
+//var VDTextAction: ((_ containerView: UIView?, _ text: NSAttributedString?, _ range: NSRange, _ rect: CGRect)->())?
+
+public typealias VDTextAction = ((_ containerView: UIView?, _ text: NSAttributedString?, _ range: NSRange, _ rect: CGRect)->())?
+
 extension NSAttributedString.Key {
     static let vdTextBinding = NSAttributedString.Key("VDTextBinding")
+    static let vdTextHighlight = NSAttributedString.Key("VDTextHighlight")
+    static let vdTextBackedString = NSAttributedString.Key("VDTextBackedString")
 }
 
 extension VDKit where Base: NSAttributedString {
-    var color: UIColor? {
+    public var color: UIColor? {
         get {
             return color(at: 0)
         }
     }
-    var font: UIFont? {
+    public var font: UIFont? {
         get {
             return font(at: 0)
         }
@@ -83,7 +89,7 @@ extension VDKit where Base: NSAttributedString {
 }
 
 extension VDKit where Base: NSMutableAttributedString {
-    var color: UIColor? {
+    public var color: UIColor? {
         get {
             return color(at: 0)
         }
@@ -91,7 +97,7 @@ extension VDKit where Base: NSMutableAttributedString {
             setColor(newValue, range: NSRange(location: 0, length: base.length))
         }
     }
-    var font: UIFont? {
+    public var font: UIFont? {
         get {
             return font(at: 0)
         }
@@ -106,6 +112,10 @@ extension VDKit where Base: NSMutableAttributedString {
     
     private func setFont(_ font: UIFont?, range: NSRange) {
         setAttribute(.font, value: font!, range: range)
+    }
+    
+    public func setTextBinding(_ textBinding: VDTextBinding, range: NSRange) {
+        setAttribute(NSAttributedString.Key.vdTextBinding, value: textBinding, range: range)
     }
     
     private func setAttribute(_ attrName: NSAttributedString.Key?, value: Any, range: NSRange?) {
@@ -123,22 +133,95 @@ extension VDKit where Base: NSMutableAttributedString {
     }
 }
 
-class VDTextBinding: NSObject, NSCoding, NSCopying {
-    var deleteConfirm: Bool
+/**
+VDTextBinding objects are used by the NSAttributedString class cluster
+as the values for shadow attributes (stored in the attributed string under
+the key named VDTextBindingAttributeName).
 
-    init(deleteConfirm: Bool) {
+Add this to a range of text will make the specified characters 'binding together'.
+VDTextView will treat the range of text as a single character during text
+selection and edit.
+*/
+public class VDTextBinding: NSObject, NSCoding, NSCopying {
+    public var deleteConfirm: Bool
+
+    public init(deleteConfirm: Bool) {
         self.deleteConfirm = deleteConfirm
     }
 
-    func encode(with coder: NSCoder) {
+    public func encode(with coder: NSCoder) {
         coder.encode(deleteConfirm, forKey: "deleteConfirm")
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         deleteConfirm = coder.decodeBool(forKey: "deleteConfirm")
     }
 
-    func copy(with zone: NSZone? = nil) -> Any {
+    public func copy(with zone: NSZone? = nil) -> Any {
         return VDTextBinding(deleteConfirm: deleteConfirm)
     }
+}
+
+public class VDTextHighlight: NSObject, NSCoding, NSCopying {
+    /**
+     Attributes that you can apply to text in an attributed string when highlight.
+     Key:   Same as CoreText/VDText Attribute Name.
+     Value: Modify attribute value when highlight (NSNull for remove attribute).
+     */
+    public var attributes: [String : Any]?
+    
+    /**
+     The user information dictionary, default is nil.
+     */
+    public var userInfo: [String : Any]?
+    
+    /**
+     Tap action when user tap the highlight, default is nil.
+     If the value is nil, VDTextView or VDLabel will ask it's delegate to handle the tap action.
+     */
+    public var longPressAction: VDTextAction?
+    
+    /**
+     Long press action when user long press the highlight, default is nil.
+     If the value is nil, VDTextView or VDLabel will ask it's delegate to handle the long press action.
+     */
+    public var tapAction: VDTextAction?
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(attributes, forKey: "attributes")
+    }
+    
+    public required init?(coder: NSCoder) {
+        if let obj = coder.decodeObject(forKey: "attributes") as? [String : Any]? {
+            attributes = obj
+        }
+    }
+    
+    public func copy(with zone: NSZone? = nil) -> Any {
+        let one = VDTextHighlight()
+        one.attributes = attributes
+        return one
+    }
+    
+//    public class func highlightWithAttributes(attributes: [String : Any]?) -> VDTextHighlight {
+//        
+//    }
+    
+    override init() {
+        
+    }
+    
+    convenience init(attributes: [String : Any]?) {
+        self.init()
+        self.attributes = attributes
+    }
+    
+//    convenience init(backgroundColor: UIColor?) {
+//        self.init()
+//
+//    }
+    
+//    convenience init(attributes: [String : Any]?, asdf:Bool) {
+//        self.init
+//    }
 }
