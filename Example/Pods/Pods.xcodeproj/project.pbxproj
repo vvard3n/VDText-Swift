@@ -11,7 +11,6 @@
 		2F15FA7C27DFF008082823D0C2961F5D /* Pods-VDText_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 36402663A4C567CB2EFCE847534F8A39 /* Pods-VDText_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68529FB3401F7A61A53D092A90038730 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		735849130EB88264C36551CF19E90D39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		761D7EAF2540272400F7A8C3 /* VDTextKVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761D7EAB2540272400F7A8C3 /* VDTextKVO.swift */; };
 		761D7EB02540272400F7A8C3 /* VDTextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761D7EAC2540272400F7A8C3 /* VDTextAttribute.swift */; };
 		761D7EB12540272400F7A8C3 /* VDNamespaceWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761D7EAD2540272400F7A8C3 /* VDNamespaceWrappable.swift */; };
 		761D7EB22540272400F7A8C3 /* VDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761D7EAE2540272400F7A8C3 /* VDTextView.swift */; };
@@ -54,7 +53,6 @@
 		5A9BD6B9DDF378FC871B1641C1601837 /* VDText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VDText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A753D1D333F8C2A67618C3330E11BC5 /* Pods-VDText_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VDText_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		7487128FDE470AC585AB4C2A23A5AF27 /* VDText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = VDText.modulemap; sourceTree = "<group>"; };
-		761D7EAB2540272400F7A8C3 /* VDTextKVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VDTextKVO.swift; path = VDText/Classes/VDTextKVO.swift; sourceTree = "<group>"; };
 		761D7EAC2540272400F7A8C3 /* VDTextAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VDTextAttribute.swift; path = VDText/Classes/VDTextAttribute.swift; sourceTree = "<group>"; };
 		761D7EAD2540272400F7A8C3 /* VDNamespaceWrappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VDNamespaceWrappable.swift; path = VDText/Classes/VDNamespaceWrappable.swift; sourceTree = "<group>"; };
 		761D7EAE2540272400F7A8C3 /* VDTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VDTextView.swift; path = VDText/Classes/VDTextView.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			children = (
 				761D7EAD2540272400F7A8C3 /* VDNamespaceWrappable.swift */,
 				761D7EAC2540272400F7A8C3 /* VDTextAttribute.swift */,
-				761D7EAB2540272400F7A8C3 /* VDTextKVO.swift */,
 				761D7EAE2540272400F7A8C3 /* VDTextView.swift */,
 				8E464B5357736859AD6FA19545A0470A /* Pod */,
 				DBBE4CC9B4BA08A1931F0DDAF875909A /* Support Files */,
@@ -393,7 +390,6 @@
 				761D7EB02540272400F7A8C3 /* VDTextAttribute.swift in Sources */,
 				761D7EB22540272400F7A8C3 /* VDTextView.swift in Sources */,
 				761D7EB12540272400F7A8C3 /* VDNamespaceWrappable.swift in Sources */,
-				761D7EAF2540272400F7A8C3 /* VDTextKVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

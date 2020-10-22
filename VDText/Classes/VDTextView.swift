@@ -194,7 +194,7 @@ extension VDTextView {
     }
 }
 
-class _TextView: UITextView {
+private class _TextView: UITextView {
     private var preSelecteRange: NSRange?
     private var delConform: Bool = false
 
@@ -230,6 +230,7 @@ class _TextView: UITextView {
             delConform = false
             attrbuteString.replaceCharacters(in: effectiveRange, with: "")
             preSelecteRange = NSRange(location: preSelecteRange?.location ?? 0, length: 0)
+//            preSelecteRange = NSRange(location: effectiveRange.location, length: 0) //如果不需要删除前选中，使用这行代码
         }
         attributedText = attrbuteString
         if let range = preSelecteRange { selectedRange = range }
